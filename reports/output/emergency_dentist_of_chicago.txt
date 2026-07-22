@@ -1,0 +1,11 @@
+AUDIT REPORT: Emergency Dentist of Chicago
+==========================================
+
+Website: https://emergencydentistchicago.com/
+Score:   95
+
+Issues:
+  - No email link
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.

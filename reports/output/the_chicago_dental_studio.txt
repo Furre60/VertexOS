@@ -1,0 +1,13 @@
+AUDIT REPORT: The Chicago Dental Studio
+=======================================
+
+Website: https://thechicagodentalstudio.com/
+Score:   75
+
+Issues:
+  - No contact form
+  - Response time over 1500ms
+
+Recommendations:
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.

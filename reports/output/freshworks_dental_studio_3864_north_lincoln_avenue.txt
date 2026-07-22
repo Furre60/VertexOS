@@ -1,0 +1,15 @@
+AUDIT REPORT: Freshworks Dental Studio
+======================================
+
+Website: https://www.freshworksdental.com/
+Score:   65
+
+Issues:
+  - No FAQ
+  - No contact form
+  - Very few images
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.

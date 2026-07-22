@@ -1,0 +1,11 @@
+AUDIT REPORT: Copeland Dental Care
+==================================
+
+Website: https://www.copelanddentalcare.com/
+Score:   0
+
+Issues:
+  - Website offline
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.

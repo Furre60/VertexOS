@@ -1,0 +1,601 @@
+[
+  {
+    "name": "Freshworks Dental Studio",
+    "website": "https://www.freshworksdental.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "3864 North Lincoln Avenue",
+    "emails": [
+      "team@freshworksdental.com"
+    ],
+    "facebook": "https://www.facebook.com/FreshworksDentalStudio/",
+    "instagram": "https://www.instagram.com/explore/locations/175255437/united-states/chicago-illinois/freshworks-dental-studio/?hl=en",
+    "contact_page": "https://freshworksdental.com/contact-us/"
+  },
+  {
+    "name": "Brighter Dental of Old Town",
+    "website": "https://brighterdentalchicago.com/",
+    "phone": "+13123373300",
+    "email": null,
+    "city": "Chicago",
+    "address": "1254 North Wells Street",
+    "emails": [],
+    "facebook": "https://www.facebook.com/BrighterDentalChicago/",
+    "instagram": null,
+    "contact_page": "https://brighterdentalchicago.com/contact-us/"
+  },
+  {
+    "name": "Brighter Dental of South Loop",
+    "website": "https://brighterdentalchicago.com/",
+    "phone": "+13129986767",
+    "email": null,
+    "city": "Chicago",
+    "address": "1620 South Michigan Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/BrighterDentalChicago/",
+    "instagram": null,
+    "contact_page": "https://brighterdentalchicago.com/contact-us/"
+  },
+  {
+    "name": "The Chicago Dental Studio",
+    "website": "https://thechicagodentalstudio.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "443 West Huron Street",
+    "emails": [
+      "lincolnpark@thechicagodentalstudio.com",
+      "Smile@thechicagodentalstudio.com",
+      "WestLoop@thechicagodentalstudio.com",
+      "lakeview@thechicagodentalstudio.com",
+      "smile@thechicagodentalstudio.com",
+      "Mayfair@thechicagodentalstudio.com",
+      "mayfair@thechicagodentalstudio.com",
+      "southloop@thechicagodentalstudio.com",
+      "LincolnPark@thechicagodentalstudio.com",
+      "westloop@thechicagodentalstudio.com"
+    ],
+    "facebook": "https://www.facebook.com/ChicagoDentalStudio",
+    "instagram": "https://www.instagram.com/chicagodentalstudio/",
+    "contact_page": "https://thechicagodentalstudio.com/contact-us/"
+  },
+  {
+    "name": "Chicago Dental Boutique",
+    "website": "https://www.chicagodentalboutique.com/",
+    "phone": "+1-312-868-0301",
+    "email": "info@chicagodentalboutique.com",
+    "city": "Chicago",
+    "address": "333 East Benton Place",
+    "emails": [],
+    "facebook": "https://www.facebook.com/chicagodentalboutique/",
+    "instagram": "https://www.instagram.com/chicagodentalboutique/",
+    "contact_page": "https://www.chicagodentalboutique.com/contact-us/"
+  },
+  {
+    "name": "Family Dental",
+    "website": "https://www.familydentalofroscoe.com/",
+    "phone": "+1-773-327-6500",
+    "email": null,
+    "city": "Chicago",
+    "address": "3332 North Western Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/FamilyDentalofRoscoe/",
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "ABC Dental",
+    "website": "https://abcdentalchicago.com/",
+    "phone": "+1-773-481-2200",
+    "email": null,
+    "city": "Chicago",
+    "address": "4608 West Diversey Avenue",
+    "emails": [
+      "info@abcdentalchicago.com"
+    ],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "City Edge Dental",
+    "website": "https://www.cityedgedental.com",
+    "phone": "+1-773-631-6802",
+    "email": null,
+    "city": "Chicago",
+    "address": "6304 North Nagle Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/cityedgedentalassociates/",
+    "instagram": "https://www.instagram.com/cityedgedental/?hl=en",
+    "contact_page": null
+  },
+  {
+    "name": "Dente Complete Dentistry",
+    "website": "https://mydente.com/",
+    "phone": "+1-773-292-1911",
+    "email": null,
+    "city": null,
+    "address": "1704 West North Avenue",
+    "emails": [
+      "info@mydente.com"
+    ],
+    "facebook": "https://www.facebook.com/dente.chicago/",
+    "instagram": "https://www.instagram.com/dente.chicago/",
+    "contact_page": "https://mydente.com/contact"
+  },
+  {
+    "name": "Modern Smiles",
+    "website": "https://modernsmileschicago.com/",
+    "phone": "+1 312 500 7080",
+    "email": null,
+    "city": "Chicago",
+    "address": "3901 North Broadway",
+    "emails": [],
+    "facebook": "https://www.facebook.com/modernsmileschicago/",
+    "instagram": "https://www.instagram.com/modernsmileschicago",
+    "contact_page": "https://modernsmileschicago.com/contact-us/"
+  },
+  {
+    "name": "Lee Dental Clinic",
+    "website": "https://www.leedentalclinic.com/",
+    "phone": "+1 773 281 7351",
+    "email": null,
+    "city": "Chicago",
+    "address": "3811 North Broadway",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Manus Dental",
+    "website": "https://www.manusdental.com/locations/hyde-park/",
+    "phone": "+1-773-692-5482",
+    "email": null,
+    "city": "Chicago",
+    "address": "1642-1646 East 55th Street",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": "https://www.manusdental.com/contact/"
+  },
+  {
+    "name": "32 & U Dental",
+    "website": "https://32andudental.com",
+    "phone": null,
+    "email": null,
+    "city": null,
+    "address": ""
+  },
+  {
+    "name": "Dentologie",
+    "website": "https://dentologie.com",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "1201 North Dearborn Street",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Copeland Dental Care",
+    "website": "https://www.copelanddentalcare.com/",
+    "phone": "+1-773-481-9455",
+    "email": null,
+    "city": "Chicago",
+    "address": "5955 West Irving Park Road"
+  },
+  {
+    "name": "Elite Dental",
+    "website": "https://www.elitedental.org",
+    "phone": "+1-773-348-6600",
+    "email": null,
+    "city": "Chicago",
+    "address": "4142 North Sheridan Road",
+    "emails": [],
+    "facebook": "https://www.facebook.com/ChicagoDentist60613",
+    "instagram": null,
+    "contact_page": "https://www.elitedental.org/contact-us/"
+  },
+  {
+    "name": "Modern Dental Logan Square",
+    "website": "https://bigsmiledental.com/",
+    "phone": "+17737728400",
+    "email": null,
+    "city": "Chicago",
+    "address": "2833 North Milwaukee Avenue",
+    "emails": [
+      "info@bigsmiledental.com"
+    ],
+    "facebook": "https://www.facebook.com/bigsmiledental",
+    "instagram": null,
+    "contact_page": "https://bigsmiledental.com/contact-us/"
+  },
+  {
+    "name": "Milktooth Pediatric Dentistry",
+    "website": "https://www.milktoothdental.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "2127 West Chicago Avenue",
+    "emails": [
+      "info@milktoothdental.com"
+    ],
+    "facebook": "https://www.facebook.com/pg/milktoothdental/about/",
+    "instagram": "https://www.instagram.com/milktoothdental",
+    "contact_page": "https://www.milktoothdental.com/contact-us"
+  },
+  {
+    "name": "Strobel Dentistry",
+    "website": "https://strobeldentistry.com",
+    "phone": "+1 312-726-3135",
+    "email": null,
+    "city": "Chicago",
+    "address": "25 East Washington Street",
+    "emails": [
+      "office@strobeldentistry.com"
+    ],
+    "facebook": "https://www.facebook.com/StrobelDentistry/",
+    "instagram": "https://www.instagram.com/thestrobeldentistry",
+    "contact_page": "https://strobeldentistry.com/contact/"
+  },
+  {
+    "name": "Orthodontic Experts",
+    "website": "https://www.orthodonticexprts.com/locations/orthodontic-experts-of-chicago-avondale/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "3339 West Belmont Avenue",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Comfort Dental Studio",
+    "website": "https://www.comfortteeth.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "1370 East 53rd Street",
+    "emails": [],
+    "facebook": "https://www.facebook.com/people/Comfort-Dental-Studio-Dr-White/61551046628909/",
+    "instagram": null,
+    "contact_page": "https://www.comfortteeth.com/contact"
+  },
+  {
+    "name": "International Dental Center",
+    "website": "https://identalcenter.net/index.html",
+    "phone": "+1 773-745-6410",
+    "email": null,
+    "city": "Chicago",
+    "address": "3138 North Narragansett Avenue",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Floss & Co. - Lincoln Park",
+    "website": "https://flossandcompany.com/locations/lincoln-park/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "1439 W Fullerton Ave",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": "https://flosslincolnpark.com/contact-us/"
+  },
+  {
+    "name": "Smiles on Elston",
+    "website": "https://www.smilesonelston.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "5780 N Elston Ave",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/little-village-access/",
+    "phone": "+1-773-522-1926",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "3303 West 26th Street",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/back-of-the-yards/",
+    "phone": "+1-773-376-1200",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "3450 South Archer Avenue",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/christian/",
+    "phone": "+1-872-703-3036",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "9718 South Halsted Street",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/little-village-esperanza/",
+    "phone": "+1-773-484-1201",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "2001 South California Avenue",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/gage-park/",
+    "phone": "+1-773-778-2200",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "3229 West 47th Place",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/humboldt-park/",
+    "phone": "+1-773-772-9200",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "1044 North Mozart Street",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/little-village-saint-anthony/",
+    "phone": "+1-773-247-7600",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "3059 West 26th Street",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Sonrisa Family Dental",
+    "website": "https://sonrisafamilydental.com/locations/perla/",
+    "phone": "+1-773-521-1190",
+    "email": "info@sfdchicago.com",
+    "city": "Chicago",
+    "address": "3948 W 26th St, #101",
+    "emails": [
+      "info@sfdchicago.com"
+    ],
+    "facebook": "https://www.facebook.com/sonrisafamilydental",
+    "instagram": null,
+    "contact_page": "https://sonrisafamilydental.com/contact/"
+  },
+  {
+    "name": "Robin L. Ferguson DDS",
+    "website": "https://robinfergusondds.com/",
+    "phone": "+1-773-488-9075",
+    "email": null,
+    "city": "Chicago",
+    "address": "820 East 87th Street",
+    "emails": [],
+    "facebook": "https://www.facebook.com/robinlfergusondds/",
+    "instagram": null,
+    "contact_page": "https://robinfergusondds.com/contact-us/"
+  },
+  {
+    "name": "Ronald Zelikow DDS",
+    "website": "https://ronaldzelikowdds.com/",
+    "phone": "+1 773-348-3309",
+    "email": null,
+    "city": null,
+    "address": "2057 West Belmont Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/Ronald-Zelikow-DDS-328148783869562/",
+    "instagram": null,
+    "contact_page": "https://ronaldzelikowdds.com/contact/"
+  },
+  {
+    "name": "Dentologie",
+    "website": "https://dentologie.com/our-locations/chicago/andersonville",
+    "phone": "+1-312-846-6752",
+    "email": null,
+    "city": "Chicago",
+    "address": "5255 North Clark Street",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "DentArt Chicago",
+    "website": "https://www.dentartchicago.com/",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "2016 South Michigan Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/dentartchicago",
+    "instagram": "https://instagram.com/dentartchicago",
+    "contact_page": "https://www.dentartchicago.com/contact-us/"
+  },
+  {
+    "name": "Dentologie",
+    "website": "https://dentologie.com/",
+    "phone": "+1 312-846-6752",
+    "email": null,
+    "city": "Chicago",
+    "address": "1259 South Wabash Avenue",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "Forever Dental - Belmont Avenue",
+    "website": "https://dentistschicago.com/dentist/il/chicago/5738-w-belmont-ave/",
+    "phone": "+1-773-685-2135",
+    "email": null,
+    "city": "Chicago",
+    "address": "5738 West Belmont Avenue",
+    "emails": [
+      "berwyn@forever-dental.com",
+      "belmont@forever-dental.com",
+      "archer@forever-dental.com"
+    ],
+    "facebook": "https://www.facebook.com/foreverdentalteam/",
+    "instagram": "https://www.instagram.com/foreverdental/ ",
+    "contact_page": "https://dentistschicago.com/contact/"
+  },
+  {
+    "name": "Forever Dental",
+    "website": "https://dentistschicago.com/dentist/il/chicago/4450-s-archer-ave/",
+    "phone": "+1-773-847-6453",
+    "email": null,
+    "city": "Chicago",
+    "address": "4450 South Archer Avenue",
+    "emails": [
+      "berwyn@forever-dental.com",
+      "belmont@forever-dental.com",
+      "archer@forever-dental.com"
+    ],
+    "facebook": "https://www.facebook.com/foreverdentalteam/",
+    "instagram": "https://www.instagram.com/foreverdental/ ",
+    "contact_page": "https://dentistschicago.com/contact/"
+  },
+  {
+    "name": "Premiere Family Dental- Archer",
+    "website": "https://www.burbanksmiles.com/",
+    "phone": "+1-773-270-3001",
+    "email": "premierefamilydentalarcher@gmail.com",
+    "city": "Chicago",
+    "address": "4554 South Archer Avenue"
+  },
+  {
+    "name": "Emergency Dentist of Chicago",
+    "website": "https://emergencydentistchicago.com/",
+    "phone": "+1-773-461-1973",
+    "email": "office@emergencydentistchicago.com",
+    "city": "Chicago",
+    "address": "4703 West Lawrence Avenue",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": "https://emergencydentistchicago.com/contact"
+  },
+  {
+    "name": "River Village Dental",
+    "website": "https://rivervillagedental.com/",
+    "phone": "+1-312-300-7385",
+    "email": null,
+    "city": null,
+    "address": "",
+    "emails": [
+      "info@rivervillagedental.com"
+    ],
+    "facebook": "https://www.facebook.com/profile.php?id=61572826972516#",
+    "instagram": "https://www.instagram.com/rivervillagedental",
+    "contact_page": "https://rivervillagedental.com/contact/"
+  },
+  {
+    "name": "Avila Dental",
+    "website": "https://aviladentalclinic.com/",
+    "phone": "+1 773-585-8000",
+    "email": "aviladentalchicago@gmail.com",
+    "city": "Chicago",
+    "address": "6144 South Pulaski Road"
+  },
+  {
+    "name": "Sloop Dental",
+    "website": "https://sloopdental.com/",
+    "phone": "+1-312-340-5761",
+    "email": null,
+    "city": "Chicago",
+    "address": "1440 South Wabash Avenue",
+    "emails": [
+      "patientcare@sloopdental.com"
+    ],
+    "facebook": "https://www.facebook.com/SLoopDental",
+    "instagram": "https://www.instagram.com/sloop_dental/",
+    "contact_page": "https://sloopdental.com/contact/"
+  },
+  {
+    "name": "Rapha Dental Care",
+    "website": "https://www.cdc-chicago.com/index.php",
+    "phone": null,
+    "email": null,
+    "city": "Chicago",
+    "address": "2913 North Narragansett Avenue",
+    "emails": [],
+    "facebook": null,
+    "instagram": null,
+    "contact_page": null
+  },
+  {
+    "name": "NK Family Dental",
+    "website": "https://www.nkfamilydental.com/",
+    "phone": "+1 773-249-4700",
+    "email": null,
+    "city": null,
+    "address": "2335 West Fullerton Avenue",
+    "emails": [],
+    "facebook": "https://www.facebook.com/NKFamilyDental/",
+    "instagram": "https://www.instagram.com/nkfamilydental/",
+    "contact_page": "https://nkfamilydental.com/contact-us/"
+  },
+  {
+    "name": "A Tooth Company",
+    "website": "https://atoothcompany.com/",
+    "phone": "+13127911829",
+    "email": null,
+    "city": "Chicago",
+    "address": "2165 South China Place",
+    "emails": [],
+    "facebook": null,
+    "instagram": "https://www.instagram.com/atoothcompany/?igshid=MzRlODBiNWFlZA%3D%3D",
+    "contact_page": "https://atoothcompany.com/contact-us"
+  }
+]

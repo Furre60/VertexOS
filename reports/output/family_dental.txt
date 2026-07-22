@@ -1,0 +1,19 @@
+AUDIT REPORT: Family Dental
+===========================
+
+Website: https://www.familydentalofroscoe.com/
+Score:   50
+
+Issues:
+  - No FAQ
+  - No email link
+  - No contact form
+  - Very few images
+  - Response time over 1500ms
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.

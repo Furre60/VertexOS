@@ -1,0 +1,13 @@
+AUDIT REPORT: Manus Dental
+==========================
+
+Website: https://www.manusdental.com/locations/hyde-park/
+Score:   85
+
+Issues:
+  - No FAQ
+  - No email link
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.

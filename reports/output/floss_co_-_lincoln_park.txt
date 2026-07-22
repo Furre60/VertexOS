@@ -1,0 +1,11 @@
+AUDIT REPORT: Floss & Co. - Lincoln Park
+========================================
+
+Website: https://flossandcompany.com/locations/lincoln-park/
+Score:   95
+
+Issues:
+  - No email link
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.

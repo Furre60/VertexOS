@@ -1,0 +1,17 @@
+AUDIT REPORT: Robin L. Ferguson DDS
+===================================
+
+Website: https://robinfergusondds.com/
+Score:   65
+
+Issues:
+  - No privacy policy
+  - No email link
+  - No contact form
+  - Response time over 1500ms
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.

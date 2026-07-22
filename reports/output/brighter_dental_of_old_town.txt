@@ -1,0 +1,15 @@
+AUDIT REPORT: Brighter Dental of Old Town
+=========================================
+
+Website: https://brighterdentalchicago.com/
+Score:   70
+
+Issues:
+  - No testimonials
+  - No email link
+  - No contact form
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.

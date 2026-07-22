@@ -1,0 +1,11 @@
+AUDIT REPORT: Sloop Dental
+==========================
+
+Website: https://sloopdental.com/
+Score:   90
+
+Issues:
+  - No testimonials
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.

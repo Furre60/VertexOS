@@ -1,0 +1,27 @@
+AUDIT REPORT: Rapha Dental Care
+===============================
+
+Website: https://www.cdc-chicago.com/index.php
+Score:   10
+
+Issues:
+  - No online booking
+  - No FAQ
+  - No testimonials
+  - No privacy policy
+  - No phone link
+  - No email link
+  - No contact form
+  - Very few images
+  - Response time over 1500ms
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.

@@ -1,0 +1,11 @@
+AUDIT REPORT: River Village Dental
+==================================
+
+Website: https://rivervillagedental.com/
+Score:   85
+
+Issues:
+  - No contact form
+
+Recommendations:
+  - Add a clear contact page or form so customers can reach the business.

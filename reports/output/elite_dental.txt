@@ -1,0 +1,17 @@
+AUDIT REPORT: Elite Dental
+==========================
+
+Website: https://www.elitedental.org
+Score:   50
+
+Issues:
+  - No email link
+  - No contact form
+  - Missing meta description
+  - Response time over 3000ms
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Add proper meta titles and descriptions to improve search visibility.
+  - Review this issue and address it to improve the site's performance.

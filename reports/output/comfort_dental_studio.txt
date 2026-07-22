@@ -1,0 +1,17 @@
+AUDIT REPORT: Comfort Dental Studio
+===================================
+
+Website: https://www.comfortteeth.com/
+Score:   60
+
+Issues:
+  - No FAQ
+  - No email link
+  - No contact form
+  - Response time over 1500ms
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
+  - Review this issue and address it to improve the site's performance.
+  - Add a clear contact page or form so customers can reach the business.
+  - Review this issue and address it to improve the site's performance.

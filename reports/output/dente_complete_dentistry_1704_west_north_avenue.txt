@@ -1,0 +1,11 @@
+AUDIT REPORT: Dente Complete Dentistry
+======================================
+
+Website: https://mydente.com/
+Score:   90
+
+Issues:
+  - No FAQ
+
+Recommendations:
+  - Review this issue and address it to improve the site's performance.
