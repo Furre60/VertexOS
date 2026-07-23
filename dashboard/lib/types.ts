@@ -1,3 +1,12 @@
+/** Sprint 3: lightweight CRM status, tracked per-lead in SQLite. */
+export type LeadStatus = "New" | "Contacted" | "Replied" | "Won" | "Lost";
+
+export const LEAD_STATUSES: LeadStatus[] = ["New", "Contacted", "Replied", "Won", "Lost"];
+
+export function isLeadStatus(value: unknown): value is LeadStatus {
+  return typeof value === "string" && (LEAD_STATUSES as string[]).includes(value);
+}
+
 export interface Business {
   slug: string;
   name: string;
@@ -6,20 +15,48 @@ export interface Business {
   score: number;
   issues: string[];
   recommendations: string[];
+  // CRM fields (Sprint 3) — stored separately in SQLite, merged in at read time.
+  favorite: boolean;
+  status: LeadStatus;
+  notes: string;
+  lastContacted: string | null;
 }
 
 export type SortKey = "name" | "score";
 export type SortDirection = "asc" | "desc";
 
-export type FilterKey = "all" | "high-priority" | "offline" | "no-booking" | "contacted";
+export type FilterKey =
+  | "all"
+  | "high-priority"
+  | "offline"
+  | "no-booking"
+  | "favorites"
+  | "status-new"
+  | "status-contacted"
+  | "status-replied"
+  | "status-won"
+  | "status-lost";
 
 export const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "all", label: "All" },
   { key: "high-priority", label: "90+" },
   { key: "offline", label: "Offline" },
   { key: "no-booking", label: "No Booking" },
-  { key: "contacted", label: "Contacted" },
+  { key: "favorites", label: "⭐ Favorites" },
+  { key: "status-new", label: "New" },
+  { key: "status-contacted", label: "Contacted" },
+  { key: "status-replied", label: "Replied" },
+  { key: "status-won", label: "Won" },
+  { key: "status-lost", label: "Lost" },
 ];
+
+const FILTER_STATUS: Partial<Record<FilterKey, LeadStatus>> = {
+  "status-new": "New",
+  "status-contacted": "Contacted",
+  "status-replied": "Replied",
+  "status-won": "Won",
+  "status-lost": "Lost",
+};
 
 export function scoreTier(score: number): "green" | "yellow" | "red" {
   if (score >= 90) return "green";
@@ -53,12 +90,14 @@ export function applyFilter(businesses: Business[], filter: FilterKey): Business
       return businesses.filter(isOffline);
     case "no-booking":
       return businesses.filter(hasBookingIssue);
-    case "contacted":
-      // Not tracked in scored.json yet — placeholder chip, intentionally empty.
-      return [];
+    case "favorites":
+      return businesses.filter((b) => b.favorite);
     case "all":
-    default:
       return businesses;
+    default: {
+      const status = FILTER_STATUS[filter];
+      return status ? businesses.filter((b) => b.status === status) : businesses;
+    }
   }
 }
 

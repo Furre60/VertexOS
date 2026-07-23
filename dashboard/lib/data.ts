@@ -1,6 +1,7 @@
 import { readFile } from "fs/promises";
 import path from "path";
 import type { Business } from "./types";
+import { getAllLeads, getLead } from "./leads-store";
 
 /**
  * VertexOS reads lead-scoring output directly from disk — no database,
@@ -35,8 +36,11 @@ function slugify(input: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
+/** Business fields sourced from scored.json, before CRM data is merged in. */
+type ScoredBusiness = Omit<Business, "favorite" | "status" | "notes" | "lastContacted">;
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function normalize(raw: any, index: number): Business | null {
+function normalize(raw: any, index: number): ScoredBusiness | null {
   if (!raw || typeof raw !== "object") return null;
 
   const name: string | undefined = raw.name ?? raw.business_name ?? raw.businessName ?? raw.company;
@@ -76,9 +80,12 @@ function normalize(raw: any, index: number): Business | null {
   };
 }
 
-let cache: Business[] | null = null;
+// Only the JSON-derived fields are cached — CRM fields (favorite/status/
+// notes/lastContacted) live in SQLite and can change at any time via the
+// /api/leads routes, so they're merged in fresh on every read below.
+let cache: ScoredBusiness[] | null = null;
 
-export async function getBusinesses(): Promise<Business[]> {
+async function getScoredBusinesses(): Promise<ScoredBusiness[]> {
   if (cache) return cache;
 
   const raw = await readFile(DATA_PATH, "utf-8");
@@ -87,13 +94,33 @@ export async function getBusinesses(): Promise<Business[]> {
 
   const businesses = list
     .map((item, i) => normalize(item, i))
-    .filter((b): b is Business => b !== null);
+    .filter((b): b is ScoredBusiness => b !== null);
 
   cache = businesses;
   return businesses;
 }
 
+export async function getBusinesses(): Promise<Business[]> {
+  const scored = await getScoredBusinesses();
+  const leads = getAllLeads();
+
+  return scored.map((business) => {
+    const lead = leads[business.slug];
+    return {
+      ...business,
+      favorite: lead?.favorite ?? false,
+      status: lead?.status ?? "New",
+      notes: lead?.notes ?? "",
+      lastContacted: lead?.lastContacted ?? null,
+    };
+  });
+}
+
 export async function getBusinessBySlug(slug: string): Promise<Business | undefined> {
-  const businesses = await getBusinesses();
-  return businesses.find((b) => b.slug === slug);
+  const scored = await getScoredBusinesses();
+  const business = scored.find((b) => b.slug === slug);
+  if (!business) return undefined;
+
+  const lead = getLead(slug);
+  return { ...business, ...lead };
 }

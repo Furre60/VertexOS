@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, CircleAlert, Lightbulb, Globe, MapPin } from "lucide-react";
 import { DashboardHeader } from "@/components/dashboard/header";
 import { ScoreBadge } from "@/components/dashboard/score-badge";
+import { LeadEditor } from "@/components/dashboard/lead-editor";
 import { buttonVariants } from "@/components/ui/button";
 import { getBusinessBySlug, getBusinesses } from "@/lib/data";
 
@@ -82,6 +83,16 @@ export default async function BusinessPage({ params }: BusinessPageProps) {
               <ArrowUpRight className="size-4" />
             </a>
           )}
+        </div>
+
+        <div className="mt-6">
+          <LeadEditor
+            slug={business.slug}
+            initialFavorite={business.favorite}
+            initialStatus={business.status}
+            initialNotes={business.notes}
+            initialLastContacted={business.lastContacted}
+          />
         </div>
 
         <div className="mt-6 grid gap-6 sm:grid-cols-2">

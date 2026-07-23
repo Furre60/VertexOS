@@ -8,14 +8,16 @@ import { Input } from "@/components/ui/input";
 import { ScoreBadge } from "@/components/dashboard/score-badge";
 import { FilterChips } from "@/components/dashboard/filter-chips";
 import { LeadActions } from "@/components/dashboard/lead-actions";
+import { FavoriteStar } from "@/components/dashboard/favorite-star";
+import { StatusBadge } from "@/components/dashboard/status-badge";
 import {
   applyFilter,
+  FILTERS,
   type Business,
   type FilterKey,
   type SortDirection,
   type SortKey,
 } from "@/lib/types";
-import { cn } from "@/lib/utils";
 
 interface LeadsTableProps {
   businesses: Business[];
@@ -37,16 +39,13 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
   const [sortDir, setSortDir] = useState<SortDirection>("desc");
   const [filter, setFilter] = useState<FilterKey>("all");
 
-  const counts = useMemo(
-    () => ({
-      all: businesses.length,
-      "high-priority": applyFilter(businesses, "high-priority").length,
-      offline: applyFilter(businesses, "offline").length,
-      "no-booking": applyFilter(businesses, "no-booking").length,
-      contacted: applyFilter(businesses, "contacted").length,
-    }),
-    [businesses]
-  );
+  const counts = useMemo(() => {
+    const map = {} as Record<FilterKey, number>;
+    for (const f of FILTERS) {
+      map[f.key] = applyFilter(businesses, f.key).length;
+    }
+    return map;
+  }, [businesses]);
 
   const filtered = useMemo(() => {
     const byFilter = applyFilter(businesses, filter);
@@ -108,9 +107,12 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
 
       <div className="overflow-hidden rounded-2xl border border-vx-border bg-vx-surface shadow-[0_1px_0_0_rgba(255,255,255,0.03)_inset]">
         <div className="vx-scrollbar overflow-x-auto">
-          <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+          <table className="w-full min-w-[860px] border-collapse text-left text-sm">
             <thead>
               <tr className="border-b border-vx-border bg-vx-surface-raised/50 text-xs uppercase tracking-wide text-vx-text-muted">
+                <th scope="col" className="w-11 px-3 py-3 font-medium">
+                  <span className="sr-only">Favorite</span>
+                </th>
                 <th scope="col" className="px-5 py-3 font-medium">
                   <button
                     onClick={() => toggleSort("name")}
@@ -132,6 +134,9 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
                 <th scope="col" className="px-5 py-3 font-medium">
                   Website
                 </th>
+                <th scope="col" className="px-5 py-3 font-medium">
+                  Status
+                </th>
                 <th scope="col" className="px-5 py-3 text-right font-medium">
                   Actions
                 </th>
@@ -150,6 +155,11 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
                     whileHover={{ backgroundColor: "rgba(255,255,255,0.025)" }}
                     className="group border-b border-vx-border-soft last:border-b-0"
                   >
+                    <td className="p-0">
+                      <div className="flex justify-center px-3 py-3.5">
+                        <FavoriteStar slug={business.slug} initialFavorite={business.favorite} />
+                      </div>
+                    </td>
                     <td className="p-0">
                       <Link
                         href={`/business/${business.slug}`}
@@ -179,6 +189,11 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
                       </Link>
                     </td>
                     <td className="p-0">
+                      <Link href={`/business/${business.slug}`} className="block px-5 py-3.5">
+                        <StatusBadge status={business.status} />
+                      </Link>
+                    </td>
+                    <td className="p-0">
                       <div className="flex justify-end px-5 py-3">
                         <LeadActions slug={business.slug} />
                       </div>
@@ -189,12 +204,8 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
 
               {filtered.length === 0 && (
                 <tr>
-                  <td colSpan={4} className="px-5 py-12 text-center text-vx-text-muted">
-                    {filter === "contacted"
-                      ? "Contacted tracking isn't wired up yet — this filter is a placeholder."
-                      : query
-                        ? `No businesses match \u201c${query}\u201d.`
-                        : "No businesses match this filter."}
+                  <td colSpan={6} className="px-5 py-12 text-center text-vx-text-muted">
+                    {query ? `No businesses match \u201c${query}\u201d.` : "No businesses match this filter."}
                   </td>
                 </tr>
               )}
