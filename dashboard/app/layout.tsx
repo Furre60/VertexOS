@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
+// Self-hosted (rather than next/font/google) so `npm run build` doesn't
+// depend on reaching fonts.googleapis.com at build time — same families,
+// same CSS variables, no visual change.
+const inter = localFont({
+  src: "./fonts/Inter-Variable.ttf",
   variable: "--font-inter",
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+const jetbrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-Variable.ttf",
   variable: "--font-jetbrains-mono",
   display: "swap",
 });

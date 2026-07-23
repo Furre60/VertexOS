@@ -195,7 +195,7 @@ export function LeadsTable({ businesses }: LeadsTableProps) {
                     </td>
                     <td className="p-0">
                       <div className="flex justify-end px-5 py-3">
-                        <LeadActions slug={business.slug} />
+                        <LeadActions business={business} />
                       </div>
                     </td>
                   </motion.tr>

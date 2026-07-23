@@ -7,6 +7,32 @@ export function isLeadStatus(value: unknown): value is LeadStatus {
   return typeof value === "string" && (LEAD_STATUSES as string[]).includes(value);
 }
 
+/**
+ * Sprint 4: raw per-page audit metadata from the analyzer pipeline
+ * (analyzer/website_analyzer.py output, passed through scored.json under
+ * the "analysis" key). Every field is optional since older or partial
+ * scored.json records may not carry the full audit. Used by the email
+ * generator to ground outreach copy in real, lead-specific findings
+ * instead of generic template language.
+ */
+export interface BusinessAnalysis {
+  title?: string;
+  description?: string;
+  https?: boolean;
+  forms?: number;
+  images?: number;
+  internalLinks?: number;
+  externalLinks?: number;
+  booking?: boolean;
+  hasFaq?: boolean;
+  hasTestimonials?: boolean;
+  hasPrivacyPolicy?: boolean;
+  hasPhoneLink?: boolean;
+  hasEmailLink?: boolean;
+  responseTimeMs?: number;
+  statusCode?: number;
+}
+
 export interface Business {
   slug: string;
   name: string;
@@ -15,6 +41,12 @@ export interface Business {
   score: number;
   issues: string[];
   recommendations: string[];
+  // Sprint 4: optional enrichment fields carried through from scored.json,
+  // additive only — nothing below changes how existing fields behave.
+  city?: string;
+  phone?: string;
+  email?: string;
+  analysis?: BusinessAnalysis;
   // CRM fields (Sprint 3) — stored separately in SQLite, merged in at read time.
   favorite: boolean;
   status: LeadStatus;

@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
 import path from "path";
-import type { Business } from "./types";
+import type { Business, BusinessAnalysis } from "./types";
 import { getAllLeads, getLead } from "./leads-store";
 
 /**
@@ -40,6 +40,34 @@ function slugify(input: string): string {
 type ScoredBusiness = Omit<Business, "favorite" | "status" | "notes" | "lastContacted">;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+function normalizeAnalysis(raw: any): BusinessAnalysis | undefined {
+  const a = raw?.analysis;
+  if (!a || typeof a !== "object") return undefined;
+
+  const analysis: BusinessAnalysis = {
+    title: typeof a.title === "string" ? a.title : undefined,
+    description: typeof a.description === "string" ? a.description : undefined,
+    https: typeof a.https === "boolean" ? a.https : undefined,
+    forms: typeof a.forms === "number" ? a.forms : undefined,
+    images: typeof a.images === "number" ? a.images : undefined,
+    internalLinks: typeof a.internal_links === "number" ? a.internal_links : undefined,
+    externalLinks: typeof a.external_links === "number" ? a.external_links : undefined,
+    booking: typeof a.booking === "boolean" ? a.booking : undefined,
+    hasFaq: typeof a.has_faq === "boolean" ? a.has_faq : undefined,
+    hasTestimonials: typeof a.has_testimonials === "boolean" ? a.has_testimonials : undefined,
+    hasPrivacyPolicy: typeof a.has_privacy_policy === "boolean" ? a.has_privacy_policy : undefined,
+    hasPhoneLink: typeof a.has_phone_link === "boolean" ? a.has_phone_link : undefined,
+    hasEmailLink: typeof a.has_email_link === "boolean" ? a.has_email_link : undefined,
+    responseTimeMs: typeof a.response_time_ms === "number" ? a.response_time_ms : undefined,
+    statusCode: typeof a.status_code === "number" ? a.status_code : undefined,
+  };
+
+  // Skip attaching an object where every field came back undefined.
+  const hasAnyField = Object.values(analysis).some((v) => v !== undefined);
+  return hasAnyField ? analysis : undefined;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function normalize(raw: any, index: number): ScoredBusiness | null {
   if (!raw || typeof raw !== "object") return null;
 
@@ -69,6 +97,15 @@ function normalize(raw: any, index: number): ScoredBusiness | null {
 
   const slug: string = raw.slug ? String(raw.slug) : `${slugify(name)}-${index}`;
 
+  const city: string | undefined = typeof raw.city === "string" ? raw.city : undefined;
+  const phone: string | undefined = typeof raw.phone === "string" ? raw.phone : undefined;
+  const email: string | undefined =
+    typeof raw.email === "string"
+      ? raw.email
+      : Array.isArray(raw.emails) && typeof raw.emails[0] === "string"
+        ? raw.emails[0]
+        : undefined;
+
   return {
     slug,
     name,
@@ -77,6 +114,10 @@ function normalize(raw: any, index: number): ScoredBusiness | null {
     score: Number.isFinite(score) ? score : 0,
     issues,
     recommendations,
+    city,
+    phone,
+    email,
+    analysis: normalizeAnalysis(raw),
   };
 }
 
