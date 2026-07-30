@@ -3,22 +3,38 @@
  * project by combining project-template/ with the components and theme
  * the spec selects.
  *
- * Sprint 6 scope: components are selected by type (no layout variants
- * yet - see components-library/Hero's doc comment) and there is exactly
- * one theme. Both are extended in Sprint 7 without changing this file's
- * shape - a variant just becomes another field compose.ts reads off each
- * component entry, and additional themes are just more registry entries.
+ * Sprint 7 scope: the full ten-component catalog, per-component layout
+ * variants (Hero, Pricing), and three themes. Validation is two-layered:
  *
- * Validation here is deliberately structural only (JSON shape, known
- * component types, known theme id, required props present) - the deeper
- * check of "does this actually compile as a Next.js project" is
- * build/validate.ts, arriving in Sprint 7.
+ *   1. Shallow, here in compose.ts, before anything is written to disk:
+ *      JSON shape, known component types, known theme, known variants,
+ *      required top-level props present, and - new this sprint - only
+ *      *known* prop keys accepted (an unrecognized key would otherwise
+ *      become a literal, unescaped JSX attribute name when composed,
+ *      which is the one part of a generated page that ISN'T protected by
+ *      JSON.stringify-based value serialization).
+ *   2. Deep, in build/validate.ts, after files are written but before
+ *      success is reported: per-item shape of array props (e.g. every
+ *      Pricing plan actually has name/price/features), plus a real
+ *      TypeScript syntax parse of the generated page.tsx. A failure here
+ *      cleans up the partially-written output directory - callers never
+ *      see a "successful" render that actually produced broken output.
  */
 
-import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { THEMES, type Theme } from "../themes/index.ts";
+import { validateComposedProject } from "./validate.ts";
+import {
+  COMPONENT_REGISTRY,
+  SiteSpecValidationError,
+  type ComponentDefinition,
+  type ComponentSpec,
+  type SiteSpec,
+} from "./registry.ts";
+
+export { SiteSpecValidationError };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITE_RENDERER_ROOT = resolve(__dirname, "..");
@@ -32,41 +48,86 @@ const COMPONENTS_LIBRARY_DIR = join(SITE_RENDERER_ROOT, "components-library");
  */
 const COPY_IGNORE = new Set(["node_modules", ".next", "next-env.d.ts"]);
 
-/** One entry per component type known to the renderer. */
-interface ComponentDefinition {
-  /** Folder name under components-library/ and, once copied, components/. */
-  folderName: string;
-  /** Prop names that must be present as non-empty strings. */
-  requiredProps: string[];
+function allowedPropKeys(definition: ComponentDefinition): Set<string> {
+  const keys = new Set<string>([
+    ...definition.requiredStringProps,
+    ...definition.requiredArrayProps,
+    ...definition.optionalProps,
+  ]);
+  if (definition.variants) {
+    keys.add("variant");
+  }
+  return keys;
 }
 
-const COMPONENT_REGISTRY: Record<string, ComponentDefinition> = {
-  hero: {
-    folderName: "Hero",
-    requiredProps: ["headline", "subheadline", "ctaLabel"],
-  },
-  about: {
-    folderName: "About",
-    requiredProps: ["heading", "body"],
-  },
-  footer: {
-    folderName: "Footer",
-    requiredProps: ["businessName"],
-  },
-};
+function validateComponentEntry(entry: unknown, index: number): ComponentSpec {
+  if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
+    throw new SiteSpecValidationError(`components[${index}] must be an object.`);
+  }
+  const c = entry as Record<string, unknown>;
 
-export interface ComponentSpec {
-  type: string;
-  props: Record<string, unknown>;
+  if (typeof c.type !== "string" || !(c.type in COMPONENT_REGISTRY)) {
+    const known = Object.keys(COMPONENT_REGISTRY).join(", ");
+    throw new SiteSpecValidationError(
+      `components[${index}] has unknown type "${String(c.type)}". Known types: ${known}.`
+    );
+  }
+  const type = c.type;
+  const definition = COMPONENT_REGISTRY[type];
+
+  const props = (
+    typeof c.props === "object" && c.props !== null && !Array.isArray(c.props) ? c.props : {}
+  ) as Record<string, unknown>;
+
+  const allowed = allowedPropKeys(definition);
+  for (const key of Object.keys(props)) {
+    if (!allowed.has(key)) {
+      const knownKeys = [...allowed].join(", ") || "(none)";
+      throw new SiteSpecValidationError(
+        `components[${index}] (type "${type}") has unexpected prop "${key}". ` +
+          `Accepted props: ${knownKeys}.`
+      );
+    }
+  }
+
+  if ("variant" in props) {
+    if (!definition.variants) {
+      throw new SiteSpecValidationError(
+        `components[${index}] (type "${type}") does not support a "variant".`
+      );
+    }
+    if (
+      typeof props.variant !== "string" ||
+      !definition.variants.ids.includes(props.variant)
+    ) {
+      const known = definition.variants.ids.join(", ");
+      throw new SiteSpecValidationError(
+        `components[${index}] (type "${type}") has unknown variant "${String(props.variant)}". ` +
+          `Known variants: ${known}.`
+      );
+    }
+  }
+
+  for (const key of definition.requiredStringProps) {
+    const value = props[key];
+    if (typeof value !== "string" || value.trim().length === 0) {
+      throw new SiteSpecValidationError(
+        `components[${index}] (type "${type}") is missing required prop "${key}" (expected a non-empty string).`
+      );
+    }
+  }
+
+  for (const key of definition.requiredArrayProps) {
+    const value = props[key];
+    if (!Array.isArray(value) || value.length === 0) {
+      throw new SiteSpecValidationError(
+        `components[${index}] (type "${type}") is missing required prop "${key}" (expected a non-empty array).`
+      );
+    }
+  }
+
+  return { type, props };
 }
-
-export interface SiteSpec {
-  theme_id: string;
-  components: ComponentSpec[];
-}
-
-/** Raised for any problem with the input spec itself (not a filesystem/build error). */
-export class SiteSpecValidationError extends Error {}
 
 function validateSpec(raw: unknown): SiteSpec {
   if (typeof raw !== "object" || raw === null || Array.isArray(raw)) {
@@ -92,37 +153,7 @@ function validateSpec(raw: unknown): SiteSpec {
     );
   }
 
-  const components: ComponentSpec[] = spec.components.map((entry, index) => {
-    if (typeof entry !== "object" || entry === null || Array.isArray(entry)) {
-      throw new SiteSpecValidationError(`components[${index}] must be an object.`);
-    }
-    const c = entry as Record<string, unknown>;
-
-    if (typeof c.type !== "string" || !(c.type in COMPONENT_REGISTRY)) {
-      const known = Object.keys(COMPONENT_REGISTRY).join(", ");
-      throw new SiteSpecValidationError(
-        `components[${index}] has unknown type "${String(c.type)}". Known types: ${known}.`
-      );
-    }
-
-    const definition = COMPONENT_REGISTRY[c.type];
-    const props = (
-      typeof c.props === "object" && c.props !== null && !Array.isArray(c.props)
-        ? c.props
-        : {}
-    ) as Record<string, unknown>;
-
-    for (const requiredProp of definition.requiredProps) {
-      const value = props[requiredProp];
-      if (typeof value !== "string" || value.trim().length === 0) {
-        throw new SiteSpecValidationError(
-          `components[${index}] (type "${c.type}") is missing required prop "${requiredProp}" (expected a non-empty string).`
-        );
-      }
-    }
-
-    return { type: c.type, props };
-  });
+  const components = spec.components.map((entry, index) => validateComponentEntry(entry, index));
 
   return { theme_id: spec.theme_id, components };
 }
@@ -174,9 +205,10 @@ function copyUsedComponents(spec: SiteSpec, outputDir: string): void {
 
 /**
  * Renders a prop value as a JSX attribute expression via JSON.stringify.
- * This is correct for any JSON-serializable value (strings, numbers,
- * booleans) with no manual escaping - JSON.stringify already produces a
- * valid JS literal, so `attr={<that literal>}` is always valid TSX.
+ * Correct for any JSON-serializable value (strings, numbers, booleans,
+ * arrays of objects) with no manual escaping - JSON.stringify already
+ * produces a valid JS literal, so `attr={<that literal>}` is always valid
+ * TSX regardless of quotes, newlines, or other characters in the value.
  */
 function jsxAttrValue(value: unknown): string {
   return `{${JSON.stringify(value)}}`;
@@ -248,9 +280,10 @@ body {
 
 /**
  * Composes a full Next.js project at `output` from the SiteSpec at
- * `specPath`. Throws SiteSpecValidationError for bad input, or a plain
- * Error for filesystem problems (missing template/components, output
- * path collision).
+ * `specPath`. Throws SiteSpecValidationError for bad input (before or
+ * after writing - either way, no partial output directory is left
+ * behind), or a plain Error for filesystem problems (missing
+ * template/components, output path collision).
  */
 export function composeSite(specPath: string, output: string): void {
   const spec = loadSpec(specPath);
@@ -265,8 +298,16 @@ export function composeSite(specPath: string, output: string): void {
   }
   mkdirSync(outputDir, { recursive: true });
 
-  copyProjectTemplate(outputDir);
-  copyUsedComponents(spec, outputDir);
-  writeGlobalsCss(theme, outputDir);
-  writePage(spec, outputDir);
+  try {
+    copyProjectTemplate(outputDir);
+    copyUsedComponents(spec, outputDir);
+    writeGlobalsCss(theme, outputDir);
+    writePage(spec, outputDir);
+    validateComposedProject(spec, outputDir);
+  } catch (error) {
+    // Never leave a broken directory behind that looks like a successful
+    // render - clean up before propagating the failure.
+    rmSync(outputDir, { recursive: true, force: true });
+    throw error;
+  }
 }

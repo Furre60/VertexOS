@@ -1,0 +1,107 @@
+{
+  "theme_id": "bold-energetic",
+  "components": [
+    {
+      "type": "hero",
+      "props": {
+        "variant": "centered",
+        "headline": "Ironclad Fitness Studio",
+        "subheadline": "High-energy strength and conditioning classes for every level.",
+        "ctaLabel": "Start your free trial",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "about",
+      "props": {
+        "heading": "About the studio",
+        "body": "Ironclad Fitness was founded by former competitive athletes who believe great coaching and a strong community make all the difference."
+      }
+    },
+    {
+      "type": "services",
+      "props": {
+        "heading": "Classes we offer",
+        "items": [
+          { "name": "Strength training", "description": "Small-group barbell and kettlebell sessions." },
+          { "name": "HIIT conditioning", "description": "High-intensity interval training for all levels." },
+          { "name": "Open gym", "description": "Unstructured access to equipment during off-peak hours." }
+        ]
+      }
+    },
+    {
+      "type": "gallery",
+      "props": {
+        "heading": "Inside the studio",
+        "items": [
+          { "caption": "Main training floor" },
+          { "caption": "Free weight area" },
+          { "caption": "Group class in session" }
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "props": {
+        "variant": "cards",
+        "heading": "Membership options",
+        "plans": [
+          {
+            "name": "Drop-in",
+            "price": "$25",
+            "features": ["Single class", "No commitment"]
+          },
+          {
+            "name": "Unlimited monthly",
+            "price": "$149/mo",
+            "features": ["Unlimited classes", "Open gym access", "Member events"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "props": {
+        "heading": "Member stories",
+        "items": [
+          { "quote": "Best coaching I've had anywhere, hands down.", "author": "Devon A." },
+          { "quote": "The community here keeps me coming back.", "author": "Priya S." }
+        ]
+      }
+    },
+    {
+      "type": "faq",
+      "props": {
+        "heading": "Questions before you join",
+        "items": [
+          { "question": "Do I need experience to start?", "answer": "Not at all - classes are scaled for every fitness level." },
+          { "question": "Can I freeze my membership?", "answer": "Yes, memberships can be paused for up to two months per year." }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "props": {
+        "heading": "Your first class is on us",
+        "ctaLabel": "Claim your free trial",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "contact",
+      "props": {
+        "heading": "Come say hello",
+        "email": "info@ironcladfitness.example",
+        "phone": "(555) 246-8100",
+        "address": "900 Industrial Way, Unit 4"
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "businessName": "Ironclad Fitness Studio",
+        "year": 2026
+      }
+    }
+  ]
+}

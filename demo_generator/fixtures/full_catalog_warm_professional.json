@@ -1,0 +1,106 @@
+{
+  "theme_id": "warm-professional",
+  "components": [
+    {
+      "type": "hero",
+      "props": {
+        "variant": "split-image",
+        "headline": "Whitfield & Cole Law Group",
+        "subheadline": "Trusted legal counsel for families and small businesses across the region.",
+        "ctaLabel": "Schedule a consultation",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "about",
+      "props": {
+        "heading": "About the firm",
+        "body": "Whitfield & Cole has represented local families and business owners for over twenty years, with a focus on clear communication and practical advice."
+      }
+    },
+    {
+      "type": "services",
+      "props": {
+        "heading": "Practice areas",
+        "items": [
+          { "name": "Estate planning", "description": "Wills, trusts, and probate guidance." },
+          { "name": "Business law", "description": "Formation, contracts, and dispute resolution." },
+          { "name": "Family law", "description": "Divorce, custody, and mediation services." }
+        ]
+      }
+    },
+    {
+      "type": "gallery",
+      "props": {
+        "heading": "Our office",
+        "items": [
+          { "caption": "Conference room" },
+          { "caption": "Downtown location" }
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "props": {
+        "variant": "table",
+        "heading": "Consultation packages",
+        "plans": [
+          {
+            "name": "Initial consultation",
+            "price": "Free",
+            "features": ["30-minute call", "Case assessment"]
+          },
+          {
+            "name": "Full case review",
+            "price": "$200",
+            "features": ["In-person meeting", "Document review", "Written summary"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "props": {
+        "heading": "Client feedback",
+        "items": [
+          { "quote": "They walked us through every step of a difficult process.", "author": "James P." },
+          { "quote": "Responsive, thorough, and genuinely caring.", "author": "Linda K." }
+        ]
+      }
+    },
+    {
+      "type": "faq",
+      "props": {
+        "heading": "Common questions",
+        "items": [
+          { "question": "Do you offer payment plans?", "answer": "Yes, we work with clients to arrange manageable payment schedules." },
+          { "question": "How soon can I meet with an attorney?", "answer": "Most consultations can be scheduled within one week." }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "props": {
+        "heading": "Let's discuss your situation",
+        "ctaLabel": "Contact us today",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "contact",
+      "props": {
+        "heading": "Reach out",
+        "email": "intake@whitfieldcolelaw.example",
+        "phone": "(555) 987-6543",
+        "address": "45 Courthouse Square, Riverside"
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "businessName": "Whitfield & Cole Law Group",
+        "year": 2026
+      }
+    }
+  ]
+}

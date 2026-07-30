@@ -1,0 +1,107 @@
+{
+  "theme_id": "modern-minimal",
+  "components": [
+    {
+      "type": "hero",
+      "props": {
+        "variant": "centered",
+        "headline": "Bright Smile Dental Care",
+        "subheadline": "Gentle, modern dentistry for the whole family, right in your neighborhood.",
+        "ctaLabel": "Book an appointment",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "about",
+      "props": {
+        "heading": "About our practice",
+        "body": "For over fifteen years, Bright Smile Dental Care has combined advanced technology with a warm, welcoming environment."
+      }
+    },
+    {
+      "type": "services",
+      "props": {
+        "heading": "Our services",
+        "items": [
+          { "name": "General checkups", "description": "Routine exams and cleanings for the whole family." },
+          { "name": "Cosmetic dentistry", "description": "Whitening, veneers, and smile makeovers." },
+          { "name": "Emergency care", "description": "Same-day appointments for urgent dental issues." }
+        ]
+      }
+    },
+    {
+      "type": "gallery",
+      "props": {
+        "heading": "Our office",
+        "items": [
+          { "caption": "Reception area" },
+          { "caption": "Treatment room" },
+          { "caption": "Kids' waiting corner" }
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "props": {
+        "variant": "cards",
+        "heading": "Simple, transparent pricing",
+        "plans": [
+          {
+            "name": "Checkup",
+            "price": "$89",
+            "features": ["Exam", "Cleaning", "X-rays if needed"]
+          },
+          {
+            "name": "Whitening",
+            "price": "$249",
+            "features": ["In-office treatment", "Take-home kit", "Follow-up visit"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "props": {
+        "heading": "What patients say",
+        "items": [
+          { "quote": "The friendliest dental office I've ever been to.", "author": "Maria G." },
+          { "quote": "Finally a dentist my kids don't dread visiting.", "author": "Tom R." }
+        ]
+      }
+    },
+    {
+      "type": "faq",
+      "props": {
+        "heading": "Frequently asked questions",
+        "items": [
+          { "question": "Do you accept insurance?", "answer": "Yes, we accept most major dental insurance plans." },
+          { "question": "Do you see children?", "answer": "Yes, patients of all ages are welcome." }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "props": {
+        "heading": "Ready to book your visit?",
+        "ctaLabel": "Schedule now",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "contact",
+      "props": {
+        "heading": "Get in touch",
+        "email": "hello@brightsmiledental.example",
+        "phone": "(555) 123-4567",
+        "address": "123 Main Street, Springfield"
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "businessName": "Bright Smile Dental Care",
+        "year": 2026
+      }
+    }
+  ]
+}
