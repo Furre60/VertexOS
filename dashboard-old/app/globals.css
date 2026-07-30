@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  /* -- VertexOS design tokens --------------------------------------- */
+  --color-vx-bg: #08090d;
+  --color-vx-surface: #101218;
+  --color-vx-surface-raised: #171a22;
+  --color-vx-border: #23262f;
+  --color-vx-border-soft: #1a1c24;
+  --color-vx-text: #e9eaee;
+  --color-vx-text-muted: #8b8d99;
+  --color-vx-text-faint: #55575f;
+
+  --color-vx-accent: #6d6af6;
+  --color-vx-accent-soft: #6d6af61a;
+  --color-vx-accent-hover: #8482ff;
+
+  --color-vx-green: #34d399;
+  --color-vx-green-soft: #34d39920;
+  --color-vx-yellow: #fbbf24;
+  --color-vx-yellow-soft: #fbbf2420;
+  --color-vx-red: #fb7185;
+  --color-vx-red-soft: #fb718520;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --animate-fade-in: fade-in 0.4s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-vx-bg);
+    color: var(--color-vx-text);
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  ::selection {
+    background-color: var(--color-vx-accent);
+    color: white;
+  }
+
+  /* Visible keyboard focus everywhere */
+  :focus-visible {
+    outline: 2px solid var(--color-vx-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .vx-grid-fade {
+    background-image:
+      radial-gradient(circle at 20% -10%, rgba(109, 106, 246, 0.16), transparent 45%),
+      linear-gradient(var(--color-vx-border-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-vx-border-soft) 1px, transparent 1px);
+    background-size: 100% 100%, 42px 42px, 42px 42px;
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  .vx-scrollbar::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .vx-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-vx-border);
+    border-radius: 999px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

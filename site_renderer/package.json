@@ -1,0 +1,16 @@
+{
+  "name": "vertexos-site-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turns a VertexOS demo request into a real Next.js project. Sprint 5: scaffolding only — copies project-template as-is.",
+  "type": "module",
+  "scripts": {
+    "cli": "tsx cli.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "5.9.3"
+  }
+}

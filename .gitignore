@@ -20,3 +20,8 @@ reports/output/
 
 # Logs
 *.log
+
+site_renderer/generated-test/
+*.db
+*.db-shm
+*.db-wal
