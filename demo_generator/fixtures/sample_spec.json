@@ -1,0 +1,28 @@
+{
+  "theme_id": "modern-minimal",
+  "components": [
+    {
+      "type": "hero",
+      "props": {
+        "headline": "Bright Smile Dental Care",
+        "subheadline": "Gentle, modern dentistry for the whole family, right in your neighborhood.",
+        "ctaLabel": "Book an appointment",
+        "ctaHref": "#contact"
+      }
+    },
+    {
+      "type": "about",
+      "props": {
+        "heading": "About our practice",
+        "body": "For over fifteen years, Bright Smile Dental Care has combined advanced technology with a warm, welcoming environment. Our team believes great dental care starts with feeling comfortable in the chair."
+      }
+    },
+    {
+      "type": "footer",
+      "props": {
+        "businessName": "Bright Smile Dental Care",
+        "year": 2026
+      }
+    }
+  ]
+}

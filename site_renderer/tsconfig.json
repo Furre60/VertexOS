@@ -1,17 +1,24 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2022"],
+    "lib": ["ES2022", "DOM"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "noEmit": true,
+    "allowImportingTsExtensions": true,
     "types": ["node"]
   },
-  "include": ["*.ts", "build/**/*.ts"],
+  "include": [
+    "*.ts",
+    "build/**/*.ts",
+    "themes/**/*.ts",
+    "components-library/**/*.tsx"
+  ],
   "exclude": ["node_modules", "project-template"]
 }
