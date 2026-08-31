@@ -1,9 +1,9 @@
 """SiteSpec schema - the JSON contract between the AI content stage
-(demo_generator/pipeline.py, arriving in Sprint 8) and the deterministic
-renderer (site_renderer/, built in Sprints 5-7).
+(demo_generator/pipeline.py, Sprint 8) and the deterministic renderer
+(site_renderer/, built in Sprints 5-7).
 
-Sprint 7 scope: the full, finalized component/variant/theme vocabulary,
-mirroring site_renderer/build/registry.ts field-for-field:
+Sprint 7 finalized the full component/variant/theme vocabulary, mirroring
+site_renderer/build/registry.ts field-for-field:
 
   - ThemeId is a closed set of the three themes in site_renderer/themes/.
   - Each component type has its own Props model with `extra="forbid"`,
@@ -17,9 +17,14 @@ mirroring site_renderer/build/registry.ts field-for-field:
     of checking in build/validate.ts. Pydantic gives us that for free in
     one model instead of a second hand-written pass.
 
-Still nothing in the codebase constructs or consumes a SiteSpec - the AI
-pipeline that will produce one doesn't exist until Sprint 8, and nothing
-on the Python side talks to site_renderer yet (that wiring is Sprint 9).
+Sprint 8 adds the two functions at the bottom of this file:
+  - try_build_site_spec() - the single validation entrypoint pipeline.py's
+    retry loop calls, so retry logic doesn't need to know pydantic's
+    exception details.
+  - default_site_spec() - a deterministic, always-valid fallback used when
+    AI generation exhausts its retries, so a hard business never crashes
+    the pipeline (see the Sprint 8 implementation summary).
+
 This module is deliberately kept in sync with the Node-side registry by
 hand, not by codegen; see the Sprint 7 implementation summary for why
 that's an accepted tradeoff for now rather than a Sprint 7 task.
@@ -31,9 +36,12 @@ rationale behind keeping this a plain, closed data contract.
 
 from __future__ import annotations
 
-from typing import Annotated, Literal, Union
+from typing import TYPE_CHECKING, Annotated, Literal, Union
 
 from pydantic import BaseModel, ConfigDict, Field
+
+if TYPE_CHECKING:
+    from demo_generator.context_builder import GenerationContext
 
 ThemeId = Literal["modern-minimal", "warm-professional", "bold-energetic"]
 
@@ -230,3 +238,83 @@ class SiteSpec(StrictModel):
 
     theme_id: ThemeId
     components: list[ComponentEntry] = Field(min_length=1)
+
+
+# --- Sprint 8: validation-for-retries + a deterministic fallback -----------
+
+
+def try_build_site_spec(raw: dict) -> SiteSpec:
+    """The single entrypoint pipeline.py's retry loop calls to turn a raw
+    dict (assembled from the three AI responses) into a validated
+    SiteSpec. Raises pydantic.ValidationError on failure - callers that
+    want a retry-friendly string can catch it and read str(error), which
+    is already a clear, per-field breakdown."""
+    return SiteSpec.model_validate(raw)
+
+
+def default_site_spec(context: "GenerationContext") -> SiteSpec:
+    """A deterministic, always-valid SiteSpec used when AI generation
+    exhausts its retries. No AI, no network - built entirely from data
+    context_builder.py already verified is real (business name, inferred
+    industry's tone/example services) plus static copy, so the DoD's
+    "hard business... not a crash" guarantee holds even with the AI
+    backend completely unavailable.
+
+    Deliberately excludes any component that would require inventing
+    contact details, pricing, testimonials, or FAQ content the business
+    never provided (pricing, testimonials, faq, contact, gallery) - the
+    fallback favors an honest, smaller page over fabricated content.
+    """
+    from demo_generator.industry_profiles import get_profile
+
+    profile = get_profile(context.industry_id)
+    name = context.business_name
+
+    return SiteSpec(
+        theme_id="modern-minimal",
+        components=[
+            HeroComponent(
+                type="hero",
+                props=HeroProps(
+                    headline=name,
+                    subheadline=f"A trusted {profile.label.lower()} ready to help you.",
+                    ctaLabel="Learn more",
+                    variant="centered",
+                ),
+            ),
+            AboutComponent(
+                type="about",
+                props=AboutProps(
+                    heading=f"About {name}",
+                    body=(
+                        f"{name} is a {profile.label.lower()} committed to serving "
+                        "its community with quality and care."
+                    ),
+                ),
+            ),
+            ServicesComponent(
+                type="services",
+                props=ServicesProps(
+                    heading="What we offer",
+                    items=[
+                        ServiceItem(
+                            name=service,
+                            description=f"Professional {service.lower()}, done right.",
+                        )
+                        for service in profile.example_services
+                    ],
+                ),
+            ),
+            CTAComponent(
+                type="cta",
+                props=CTAProps(
+                    heading="Ready to get started?",
+                    ctaLabel="Get in touch",
+                ),
+            ),
+            FooterComponent(
+                type="footer",
+                props=FooterProps(businessName=name),
+            ),
+        ],
+    )

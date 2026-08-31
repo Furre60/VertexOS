@@ -25,4 +25,5 @@ site_renderer/generated-test/
 *.db
 *.db-shm
 *.db-wal
-site_renderer/generated-*/
+
+demo_generator/fixtures/generated/
