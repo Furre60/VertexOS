@@ -27,3 +27,4 @@ site_renderer/generated-test/
 *.db-wal
 
 demo_generator/fixtures/generated/
+.fuse_hidden*
